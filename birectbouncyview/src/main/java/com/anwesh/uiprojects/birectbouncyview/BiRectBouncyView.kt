@@ -32,7 +32,7 @@ fun Canvas.drawBiRectBouncyLine(i : Int, scale : Float, w : Float, paint : Paint
     save()
     translate(gap * (i + 1), 0f)
     for (j in 0..(lines)) {
-        val sfij : Float = sfi.divideScale(i, lines)
+        val sfij : Float = sfi.divideScale(j, lines)
         save()
         translate(gap * j, 0f)
         rotate(-90f * j)
@@ -91,6 +91,34 @@ class BiRectBouncyView(ctx : Context) : View(ctx) {
             if (dir == 0f) {
                 dir = 1f - 2 * prevScale
                 cb()
+            }
+        }
+    }
+
+    data class Animator(var view : View, var animated : Boolean = false) {
+
+        fun animate(cb : () -> Unit) {
+            if (animated) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
+
+                }
+            }
+        }
+
+        fun start() {
+            if (!animated) {
+                animated = true
+                view.postInvalidate()
+            }
+        }
+
+        fun stop() {
+            if (animated) {
+                animated = false
             }
         }
     }
