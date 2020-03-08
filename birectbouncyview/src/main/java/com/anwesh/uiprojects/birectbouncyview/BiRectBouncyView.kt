@@ -59,3 +59,19 @@ fun Canvas.drawBRBNode(i : Int, scale : Float, paint : Paint) {
     drawBiRectBouncyLines(scale, w, paint)
     restore()
 }
+
+class BiRectBouncyView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
