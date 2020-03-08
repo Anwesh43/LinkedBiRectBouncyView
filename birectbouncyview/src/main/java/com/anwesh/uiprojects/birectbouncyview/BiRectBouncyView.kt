@@ -211,4 +211,13 @@ class BiRectBouncyView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BiRectBouncyView {
+            val view : BiRectBouncyView = BiRectBouncyView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
