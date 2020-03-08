@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf("#3F51B5", "#f44336", "#4CAF50", "#01579B",
 val lines : Int = 2
 val parts : Int = 5
 val strokeFactor : Int = 90
-val delay : Long = 20
+val delay : Long = 10
 val scGap : Float = 0.02f / (lines * parts)
 val backColor : Int = Color.parseColor("#BDBDBD")
 
@@ -30,7 +30,7 @@ fun Canvas.drawBiRectBouncyLine(i : Int, scale : Float, w : Float, paint : Paint
     val sf : Float = scale.sinify()
     val sfi : Float = sf.divideScale(i, parts)
     save()
-    translate(gap * (i + 1), 0f)
+    translate(gap * i, 0f)
     for (j in 0..(lines)) {
         val sfij : Float = sfi.divideScale(j, lines)
         save()
